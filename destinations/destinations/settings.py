@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
-    'destinations.apps.DestinationsConfig',
+    'destinationsApp.apps.DestinationsappConfig',
 ]
 
 MIDDLEWARE = [

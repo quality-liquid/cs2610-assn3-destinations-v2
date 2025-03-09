@@ -1,0 +1,41 @@
+{% extends "destinationsApp/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User</title>
+    <link rel="stylesheet" href="{% static 'destinationsApp/style.css' %}">
+</head>
+<body>
+    {% block title %}Create Account{% endblock %}
+
+    {% block header %}
+    <header id="header">
+      <a href="/"><h1>Destinations</h1></a>
+    </header>
+    {% endblock %}
+
+    {% block body %}
+    <h2 class="table-header">Create Account</h2>
+    <div>
+      <form class="form" action="/users/" method="post">
+        <label>Name</label>
+        <input type="text" name="name" id="name">
+        <label>Email</label>
+        <input type="text" name="email" id="email">
+        {% if bad_email %}
+        <p>Error! Email must contain an '@' symbol.</p>
+        {% endif %}
+        <label>Password</label>
+        <input type="text" name="password" id="password">
+        {% if bad_password %}
+        <p>Error! Password must be at least 8 characters long and must contain a number.</p>
+        {% endif %}
+        <button>Submit</button>
+      </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

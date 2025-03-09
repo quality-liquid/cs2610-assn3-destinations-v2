@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'destinationsApp/style.css' %}">
+  <title>{% block title %}Destinations Home{% endblock %}</title>
+</head>
+<body>
+  {% block header %}
+  <header id="header">
+    <a href="/"><h1>Destinations</h1></a>
+    <div id="header-links">
+      {% if logged_in %}
+      <a href="/destinations/">My Destinations</a>
+      <a href="/sessions/destroy/">Log Out</a>
+      {% else %}
+      <a href="/users/new/">Create Account</a>
+      <a href="/sessions/new/">Sign In</a>
+      {% endif %}
+    </div>
+  </header>
+  {% endblock %}
+  <main>
+    {% block body %}
+    <h1 class="table-header">Publicly Shared Destinations</h1>
+    {% if not destinations %}
+    <div id="pub-dest">
+      <h3>No publicly shared destinations exist in the database.</h3>
+      <p>Be the first to add a review!</p>
+    </div>
+    {% else %}
+    {% for dest in destinations %}
+    <div id="pub-dest">
+      <h3>{{ dest.name }}</h3>
+      <p>Review: {{ dest.review }}<br>
+        Rating: {{ dest.rating }}
+      </p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endblock %}
+  </main>
+</body>
+</html>

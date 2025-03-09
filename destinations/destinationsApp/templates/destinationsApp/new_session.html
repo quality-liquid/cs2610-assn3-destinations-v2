@@ -1,0 +1,33 @@
+{% extends "destinationsApp/index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Session</title>
+    <link rel="stylesheet" href="{% static 'destinationsApp/style.css' %}">
+</head>
+<body>
+    {% block title %}Sign In{% endblock %}
+
+    {% block header %}
+    <header id="header">
+      <a href="/"><h1>Destinations</h1></a>
+    </header>
+    {% endblock %}
+
+    {% block body %}
+    <h2 class="table-header">Sign In</h2>
+    <div>
+      <form class="form" action="/sessions/" method="post">
+        <label>Email</label>
+        <input type="text" name="email" id="email">
+        <label>Password</label>
+        <input type="text" name="password" id="password">
+        <button>Sign In</button>
+      </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
